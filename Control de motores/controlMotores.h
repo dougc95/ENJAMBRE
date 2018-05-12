@@ -1,7 +1,7 @@
 //Author: Mateo Antonio Rengel Acebey
 // This library has been done starting from other code that can be found at the url: 
 //https://www.luisllamas.es/arduino-motor-dc-tb6612fng/
-//this code looks for a better and easier way to control motors, specially using the driver 
+//this code looks for a better and easier way to control motors, specially using the driver dual tb6612fng 
 //
 #ifndef controlMotores_h
 #define controlMotores_h//define la clase
