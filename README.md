@@ -29,7 +29,8 @@ To run the demos do:
 
 ## CONTROL
 
-**TODO:** Add the control code
+Once you have arduino IDE install the "motor" library that is into the "control de motores" folder.
+Download all the codes there, then you have to compress them into a .zip file and add from arduino IDE
 
 ## TELECOM
 
