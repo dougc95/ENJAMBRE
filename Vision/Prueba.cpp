@@ -1,0 +1,32 @@
+#include <ros/ros.h>
+#include <tf/transform_datatypes.h>
+#include <ar_track_alvar_msgs/AlvarMarkers.h>
+
+void cb(ar_track_alvar_msgs::AlvarMarkers req) {
+    if (!req.markers.empty()) {
+      double x0, y0, z0;
+      x0=req.markers[0].pose.pose.orientation.x;
+      y0=req.markers[0].pose.pose.orientation.y;
+      z0=req.markers[0].pose.pose.orientation.z;
+      tf::Quaternion q(req.markers[0].pose.pose.orientation.x, req.markers[0].pose.pose.orientation.y, req.markers[0].pose.pose.orientation.z, req.markers[0].pose.pose.orientation.w);
+      tf::Matrix3x3 m(q);
+      double roll, pitch, yaw;
+      m.getRPY(roll, pitch, yaw);
+      
+      
+      ROS_INFO("x, y, z =%1.2f  %1.2f  %1.2f", x0, y0, z0);
+      //ROS_INFO("roll, pitch, yaw=%1.2f  %1.2f  %1.2f", roll, pitch, yaw);
+      // roll  --> rotate around vertical axis
+      // pitch --> rotate around horizontal axis
+      // yaw   --> rotate around depth axis
+    } // if
+}
+
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "arlistener");
+  ros::NodeHandle nh;
+  ros::Subscriber sub = nh.subscribe("ar_pose_marker", 1, cb);
+  ros::spin();
+  return 0;
+
+}
